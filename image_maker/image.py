@@ -1,12 +1,13 @@
 from PIL import Image
 from image_maker import textures
 
-def gen_image():
+bg = Image.open("image_maker/textures/simple_bg.png")
+ov = Image.open("image_maker/textures/simple_star.png")
 
-  open_bg = Image.open('simple_bg')
-  open_ov = Image.open('simple_star')
-  convert_bg = open_bg.convert("RGBA")
-  convert_ov = open_ov.convert("RGBA")
+def gen_image(bg, ov):
+
+  convert_bg = bg.convert("RGBA")
+  convert_ov = ov.convert("RGBA")
 
   new_img = Image.blend(convert_bg, convert_ov, 0.5)
 
