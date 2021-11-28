@@ -113,5 +113,4 @@ def gen_sol():
   # to its return value.
   anomaly = anomaly_gen.has_anomaly(generated_star)
   generated_star.anomaly = anomaly
-
   return generated_star

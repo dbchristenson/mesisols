@@ -2,7 +2,6 @@
 
 
 ###===--- Imports ---===###
-from scipy.stats import truncnorm
 from generator import utils
 import random
 import numpy as np

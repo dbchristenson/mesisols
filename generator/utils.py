@@ -26,6 +26,12 @@ color_lst = ['Black', 'Brown', 'Dynamic', 'Red',
 # Sizes
 size_lst = ['Neutron Star', 'Subdwarf', 'Dwarf', 'Subgiant',
             'Giant', 'Supergiant', 'Cepheid', 'Undefined']
+img_size_dict = {
+  'small': ['Neutron Star', 'Subdwarf'],
+  'medium': ['Dwarf', 'Subgiant'],
+  'large': ['Giant', 'Supergiant'],
+  'special': ['Cepheid', 'Undefined']
+}
 
 # Life Stages
 stage_lst = ['Protostar', 'Main Sequence', 'Post Sequence',
@@ -48,6 +54,14 @@ position_weight = [50, 20, 10, 10, 5, 5]
 system = get_truncated_normal(0, 2, 0, 10)
 system_type_lst = ['Barren', 'Exposed', 'Habitable', 'Civilized', 'Advanced']
 system_type_weight = [50, 35, 10, 4, 1]
+
+img_p_dict = {
+  'low': ['Barren', 'Exposed'],
+  'medium': ['Habitable', 'Civilized'],
+  'high': ['Advanced']
+}
+
+
 
 # Sun Spots
 # spot_severity describes the overall texturization of the star.

@@ -1,5 +1,13 @@
 {
   "files": {
+    "image_maker/image.py": [
+      {
+        "id": "9d282e5e-2da4-4877-9f28-b45b6bbcbe0e",
+        "line": 64,
+        "version": 3543,
+        "index": 1816
+      }
+    ],
     "utils.py": [
       {
         "id": "6c2997d3-a71f-4794-a3c1-fd6b24b1805b",
