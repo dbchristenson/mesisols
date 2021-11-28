@@ -16,7 +16,8 @@ def has_anomaly(Star):
   Inputs:
     Star: Class
 
-  Returns: a string representing the type of anomaly that the star is or none if there is no anomaly.
+  Returns: a string representing the type of anomaly that the 
+  star is or none if there is no anomaly.
   '''
 
   # Define the return variable

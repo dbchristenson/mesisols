@@ -38,7 +38,7 @@ def gen_color(temperature, luminosity):
     ratio_range, color_choice = percentiles[color_checks]
   
     if ratio in ratio_range:
-      color = random.choices(color_choice)[0]
+      color = random.choice(color_choice)
       break
 
   return color
@@ -56,7 +56,7 @@ def color_analyze():
   # Take 10,000 samples and store them.
   for i in range(10000):
     temp = utils.get_temp.rvs()
-    lum = random.choices(utils.lum_lst, utils.lum_weight)[0]
+    lum = random.choice(utils.lum_lst, utils.lum_weight)
 
     color_array[i] = int(temp * lum)
   
@@ -101,7 +101,7 @@ def gen_size(color):
   elif color == 'Blue':
     probabilities = [25, 25, 17.5, 17.5, 12, 3]
 
-  size = random.choices(seq, probabilities)[0]
+  size = random.choice(seq, probabilities)
 
   return size
 
@@ -118,7 +118,7 @@ def size_analyze():
   # Take 10,000 samples and store them.
   for i in range(10000):
     temp = utils.get_temp.rvs()
-    lum = random.choices(utils.lum_lst, utils.lum_weight)[0]
+    lum = random.choice(utils.lum_lst, utils.lum_weight)
 
     color = gen_color(temp, lum)
     size_array[i] = utils.size_lst.index(gen_size(color))
@@ -203,7 +203,7 @@ def class_analyze():
 
   for i in range(10000):
     temp = utils.get_temp.rvs()
-    lum = random.choices(utils.lum_lst, utils.lum_weight)[0]
+    lum = random.choice(utils.lum_lst, utils.lum_weight)
 
     color = gen_color(temp, lum)
     class_array[i] = utils.class_lst.index(gen_stellar_class(color, lum))
@@ -321,7 +321,7 @@ def gen_spots():
   Returns: a string representation of the star's texture.
   '''
   
-  return random.choices(utils.spot_severity)
+  return random.choice(utils.spot_severity)
   
   
 ### Solar Activty Module ###
