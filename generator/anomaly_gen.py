@@ -50,11 +50,11 @@ def has_anomaly(Star):
 
     # Cepheid star types have a higher chance to be Mira Stars.
     if Star.size == 'Cepheid':
-      if chance > 10:
+      if chance > 60:
         anomaly_type = 'Mira Variable Star'
         return anomaly_type
     else:
-      if chance > 50:
+      if chance > 75:
         anomaly_type = 'Mira Variable Star'
         return anomaly_type
   
@@ -66,11 +66,14 @@ def has_anomaly(Star):
   if Star.size in nova_sizes and Star.life_stage == 'Near Death':
     chance = random.randint(1, 100)
     if chance > 25:
-      anomaly_type = 'Going Supernova'
+      anomaly_type = 'Supernova'
       return anomaly_type
+  
+
+  ### Eclipse ###
 
   
-  ### Black Hole ###
+  ### Blackhole ###
   # Conditional to check if the Star has Black Hole attributes.
   if (Star.color == 'Black' and 
       Star.size == 'Undefined' and 
@@ -79,9 +82,9 @@ def has_anomaly(Star):
       # Stars can be Supermassive Black Holes by being in the
       # galaxy center.
       if Star.position == 'Galaxy Center':
-        anomaly_type = 'Supermassive Black Hole'
+        anomaly_type = 'Supermassive Blackhole'
       else:
-        anomaly_type = 'Black Hole'
+        anomaly_type = 'Blackhole'
   
   return anomaly_type
 

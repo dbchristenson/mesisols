@@ -1,4 +1,4 @@
-###===--- AlgoSols Star Generator ---===###
+###===--- MesiSols Star Generator ---===###
 
 
 ###===--- Imports ---===###
@@ -59,7 +59,7 @@ class Star:
         self.anomaly = anomaly
     
     def __repr__(self):
-      return (f"Algo Sol Attributes:\n"
+      return (f"Mesi Sol Attributes:\n"
               "---Depedent Variables---\n"
               f"Temperature: {self.temperature}\n"
               f"Luminosity: {self.luminosity}\n"
@@ -107,7 +107,9 @@ def gen_sol():
 
   # The anomaly attribute is special and is decided based on
   # previous attributions to the star.
-  generated_star = Star(temp, lum, color, size, life_stage, stellar_class, position, partner, local_system, sun_spots, solar_activity, None)
+  generated_star = Star(temp, lum, color, size, life_stage, 
+                        stellar_class, position, partner, 
+                        local_system, sun_spots, solar_activity, None)
 
   # Pass the star to the anomaly generator and set the anomaly value
   # to its return value.

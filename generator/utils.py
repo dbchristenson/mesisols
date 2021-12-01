@@ -62,10 +62,12 @@ img_p_dict = {
 }
 
 
-
 # Sun Spots
 # spot_severity describes the overall texturization of the star.
 spot_severity = ['Low', 'Medium', 'High']
 
 # Solar Activity
 flares = get_truncated_normal(0, 1.75, 0, 4)
+
+# Anomalies
+anomaly_lst = ['Binary Star', 'Pulsar', 'Mira Variable Star', 'Super Nova', 'Eclipse', 'Blackhole', 'Supermassive Blackhole']

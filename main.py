@@ -1,4 +1,4 @@
-###===--- AlgoSols NFT Generator ---===###
+###===--- MesiSols NFT Generator ---===###
 
 
 ###===--- Imports ---===###

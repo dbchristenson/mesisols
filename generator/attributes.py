@@ -101,7 +101,7 @@ def gen_size(color):
   elif color == 'Blue':
     probabilities = [25, 25, 17.5, 17.5, 12, 3]
 
-  size = random.choice(seq, probabilities)
+  size = random.choices(seq, probabilities)[0]
 
   return size
 
