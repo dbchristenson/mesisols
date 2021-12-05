@@ -60,43 +60,50 @@ def gen_image(star, code='0'):
   root = 'image_maker/textures'
   bg_path = os.listdir(f'{root}/backgrounds/{background}')
   base_path = f'{root}/base/{img_size}/{color}.png'
-  spots_path = os.listdir(f'{root}/spots/{sun_spots}/{color}')
-  planet_path = os.listdir(f'{root}/planets/{sys_type}')
-  flare_path = os.listdir(f'{root}/flares/{color}')
-  binary_path = os.listdir(f'{root}/anomaly/binary/{binary_color}')
-  nova_path = os.listdir(f'{root}/anomaly/Supernova/{color}.png')
+
+  # The spots, local system, and flares attributes have different texture
+  # meaning they must have their folder listed for selection of image.
+  spots_path = f'{root}/spots/{sun_spots}/{color}/'
+  spots_lst = os.listdir(spots_path)
+  planet_path = f'{root}/planets/{sys_type}/'
+  planet_lst = os.listdir(planet_path)
+  flare_path = f'{root}/flares/{color}/{flares}/'
+  flare_lst = os.listdir(flare_path)
 
   # Open each image in a new variable.
-  bg = Image.open(random.choice(bg_path)).convert('RGBA')
+  bg = Image.open(bg_path).convert('RGBA')
+  flare = Image.open(flare_path + random.choice(flare_lst)).convert('RGBA')
   base = Image.open(base_path).convert('RGBA')
-  spots = Image.open(random.choice(spots_path)).convert('RGBA')
+  spots = Image.open(spots_path + random.choice(spots_lst)).convert('RGBA')
+
 
   ### Image Creation ###
   
+
   # Because stars may appear in front of planets, paste the
   # local system in first.
-  for planet_idx in range(p_num):
-    planet = Image.open(random.choice(planet_path)).convert('RGBA')
-    bg.paste(planet, (0,0), planet)
+  if p_num:
+    for planet_idx in range(p_num):
+      planet = Image.open(planet_path + random.choice(planet_lst)).convert('RGBA')
+      bg.paste(planet, (0,0), planet)
   
-  # Then construct the rest of the star.
-  bg.paste(base, (0,0), base)
-  bg.paste(spots, (0,0), spots)
-  
-  for flare_idx in range(flares):
-    flare = Image.open(random.choice(flare_path)).convert('RGBA')
-    bg.paste(flare, (0,0), flare)
-  
+  # Anomalies generally interfere with the rest of the image creation
+  # process so handle their case first.
   if anomaly:
     if binary:
+      binary_path = os.listdir(f'{root}/anomaly/binary/{binary_color}')
       anomaly_img = Image.open(random.choice(binary_path)).convert('RGBA')
 
     elif anomaly == 'Supernova':
+      nova_path = os.listdir(f'{root}/anomaly/Supernova/{color}.png')
       anomaly_img = Image.open(nova_path).convert('RGBA')
-    
-    
-
-    bg.paste(anomaly_img)
+  
+  bg.paste(anomaly_img, (0,0), anomaly_img)
+  
+  # Then construct the rest of the star.
+  bg.paste(flare, (0,0), flare)
+  bg.paste(base, (0,0), base)
+  bg.paste(spots, (0,0), spots)
   
   # Save the completed image to the correct folder.
   img_path = 'image_maker/star_pngs'
@@ -107,7 +114,6 @@ def gen_collection(n):
   '''
   This function generates the png files for a collection
   of n size of mesisols.
-
   Inputs:
     n: int representing how many images to generate
   

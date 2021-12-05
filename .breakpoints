@@ -3,9 +3,9 @@
     "image_maker/image.py": [
       {
         "id": "9d282e5e-2da4-4877-9f28-b45b6bbcbe0e",
-        "line": 102,
-        "version": 5680,
-        "index": 3046
+        "line": 110,
+        "version": 6259,
+        "index": 3368
       }
     ],
     "utils.py": [

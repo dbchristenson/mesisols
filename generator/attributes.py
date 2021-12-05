@@ -179,6 +179,7 @@ def gen_stellar_class(color, luminosity):
     stellar_class = class_lst[color_index]
   else:
     stellar_class = 'S'
+    return stellar_class
     
   # Use a conditional to update the stellar class if the luminosity
   # condition is met in either direction.
@@ -334,4 +335,4 @@ def gen_solar():
   solar flares that a star has.
   '''
 
-  return int(utils.flares.rvs())
+  return random.choice(utils.flares)
