@@ -225,55 +225,29 @@ def gen_partner(color, size):
   Returns: another star class, but dumbed down.
   '''
 
-  class SubStar:
-    '''
-    Class for representing a dumbed down star meant to orbit with
-    the main star of the local system.
-    
-    ###===--- Attributes ---===###
-    Temperature: Int
-    Luminosity: Int
-    Color: Str
-    Size: Str
-    '''
-    
-    def __init__(self):
-      '''
-      Initializes the SubStar object
-      '''
-      
-      # Define the 4 core variables for a star
-      self.temperature = utils.get_temp.rvs()
-      self.luminosity = random.choices(utils.lum_lst, utils.lum_weight)[0]
-      self.color = gen_color(self.temp, self.lum)
-    
-    def __repr__(self):
-      '''
-      Creates a string representation of the sub star.
-      '''
-
-      return ("- Sub Star Attributes -"
-              f"Temperature: {self.temperature}\n"
-              f"Luminosity: {self.luminosity}\n"
-              f"Color: {self.color}\n")
-
   # Define the return variable and parameters for what is
   # needed to have a partner planet.
   sub_star = None
-  req_size = ['Neutron Star', 'Subdwarf', 'Dwarf']
+  req_size = ['Neutron Star', 'Subdwarf', 'Dwarf', 'Subgiant']
   chance = random.randint(1,100)
 
   # Conditional to check if the size of the star is eligible
   # for a chance to be a double planet.
+  binary_colors = ['Yellow', 'Orange', 'Red', 'Blue', 'White']
+  if color in binary_colors:
+    binary_selection = binary_colors.remove(color)
+  else:
+    binary_selection = binary_colors
+
   if size in req_size:
 
     # Conditional
     if color == 'Dynamic':
       if chance > 10:
-        sub_star = SubStar
-    elif color == 'Yellow':
-      if chance > 75:
-        sub_star = SubStar
+        sub_star = random.choice(binary_selection)
+    elif color in binary_colors:
+      if chance > 90:
+        sub_star = random.choice(binary_selection)
   return sub_star
 
 
