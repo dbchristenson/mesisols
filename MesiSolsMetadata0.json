@@ -1,0 +1,45 @@
+{
+    "standard": "arc69",
+    "description": "MesiSol0",
+    "attributes": [
+        {"trait_type":"Temperature",
+        "value":"5565.856400901167"
+        },
+        {"trait_type":"Luminosity",
+        "value":"1"
+        },
+        {"trait_type":"Color",
+        "value":"Orange"
+        },
+        {"trait_type":"Size",
+        "value":"Subdwarf"
+        },
+        {"trait_type":"Life Stage",
+        "value":"Protostar"
+        },
+        {"trait_type":"Stellar Class",
+        "value":"M"
+        },
+        {"trait_type":"Solar Activity",
+        "value":"Medium"
+        },
+        {"trait_type":"Flares",
+        "value":"Medium"
+        },
+        {"trait_type":"Position",
+        "value":"Disk"
+        },
+        {"trait_type":"Local System (Type)",
+        "value":"None"
+        },
+        {"trait_type":"Local System (Population)",
+        "value":"0"
+        },
+        {"trait_type":"Binary System",
+        "value":"False"
+        },
+        {"trait_type":"Anomaly",
+        "value":"None"
+        },        
+    ]
+}

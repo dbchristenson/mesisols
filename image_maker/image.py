@@ -11,9 +11,7 @@ import random, os
 # Python Files #
 from generator import utils
 from generator.sol_gen import gen_sol
-
-# bg = Image.open('image_maker/textures/backgrounds/Rogue/rogue1.png')
-# base = Image.open('image_maker/textures/base/small/White.png')
+from image_maker import json
 
 
 ###===--- Image Generator Functions ---===###
@@ -107,7 +105,7 @@ def gen_image(star, code='0'):
   
   # Save the completed image to the correct folder.
   img_path = 'image_maker/star_pngs'
-  bg.save(f'{img_path}/mesisol{code}.png')
+  bg.save(f'{img_path}/MesiSol{code}.png')
 
 
 def gen_collection(n):
@@ -125,3 +123,5 @@ def gen_collection(n):
     star = gen_sol()
 
     gen_image(star, str(star_idx))
+    json.gen_json(star, str(star_idx))
+    
