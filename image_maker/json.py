@@ -117,7 +117,7 @@ def gen_json(star, code):
                   f'{ind}{ind}\n{ind}]\n'
   '}')
 
-  with open(f'MesiSolsMetadata{code}.json', 'w+') as j:
+  with open(f'image_maker/star_json/MesiSolsMetadata{code}.json', 'w+') as j:
     j.write(metadata2)
   
   j.close

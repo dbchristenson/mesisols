@@ -89,11 +89,11 @@ def gen_image(star, code='0'):
   # process so handle their case first.
   if anomaly:
     if binary:
-      binary_path = os.listdir(f'{root}/anomaly/binary/{binary_color}')
-      anomaly_img = Image.open(random.choice(binary_path)).convert('RGBA')
+      binary_path = f'{root}/anomaly/binary/{binary_color}'
+      anomaly_img = Image.open(binary_path).convert('RGBA')
 
     elif anomaly == 'Supernova':
-      nova_path = os.listdir(f'{root}/anomaly/Supernova/{color}.png')
+      nova_path = f'{root}/anomaly/Supernova/{color}.png'
       anomaly_img = Image.open(nova_path).convert('RGBA')
   
   bg.paste(anomaly_img, (0,0), anomaly_img)

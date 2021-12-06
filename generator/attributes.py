@@ -331,8 +331,7 @@ def gen_solar():
   This functions generates a star's solar flare activity
   if there is any.
   
-  Returns: an Int describing the number of
-  solar flares that a star has.
+  Returns: an Str describing how severe the solar flares are.
   '''
 
   return random.choice(utils.flares)

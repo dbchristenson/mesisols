@@ -71,6 +71,18 @@ def has_anomaly(Star):
   
 
   ### Eclipse ###
+  eclipse_sizes = ['Subdwarf, Dwarf, Subgiant']
+  planet_type, planet_num = Star.local_system
+
+  # Conditional to check if the Star has Eclipse attributes.
+  if (Star.size in eclipse_sizes and 
+      Star.solar_activity == 'High' and
+      planet_num > 0):
+
+      chance = random.randint(1, 100)
+      if chance > 10:
+        anomaly_type = 'Eclipse'
+        return anomaly_type
 
   
   ### Blackhole ###
