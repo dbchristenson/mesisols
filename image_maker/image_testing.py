@@ -30,6 +30,3 @@ def gen_system_img(sys_type, num_planets):
     bg.paste(planet, (0,0), planet)
   
   bg.save(f'{img_path}/planet_test.png')
-  
-  
-  

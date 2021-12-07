@@ -56,7 +56,7 @@ def gen_image(star, code='0'):
   # Define the paths for image selection. This setup allows for modularity
   # and the addition of extra images to increase randomization.
   root = 'image_maker/textures'
-  bg_path = os.listdir(f'{root}/backgrounds/{background}')
+  bg_path = f'{root}/backgrounds/{background}'
   base_path = f'{root}/base/{img_size}/{color}.png'
 
   # The spots, local system, and flares attributes have different texture
@@ -101,7 +101,7 @@ def gen_image(star, code='0'):
   # Then construct the rest of the star.
   bg.paste(flare, (0,0), flare)
   bg.paste(base, (0,0), base)
-  bg.paste(spots, (0,0), spots)
+  bg.paste(spots, (0,0), base)
   
   # Save the completed image to the correct folder.
   img_path = 'image_maker/star_pngs'
