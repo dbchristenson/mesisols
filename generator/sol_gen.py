@@ -27,12 +27,12 @@ class Star:
     Life Stage: Str
     Stellar Class: Str
     Anomaly: None or Str
-    Partner: None or Star
+    Partner: None or Color (Str)
 
     - Mostly Independent Attributes -
     Position: Str
-    System: None or Tuple of (Str, Int)
-    Solar Flares: None or Tuple (Str, Int)
+    System: Tuple of (Str, Int)
+    Solar Flares: Str
 
 
     ###===--- Methods ---===###

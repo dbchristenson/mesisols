@@ -51,7 +51,7 @@ position_lst = ['Disk', 'Globular Cluster', 'Halo',
 position_weight = [30, 20, 15, 15, 10, 10]
 
 # Local System
-system = get_truncated_normal(1, 1, 1, 4)
+system = get_truncated_normal(1, 2.5, 0, 4)
 system_type_lst = ['Barren', 'Exposed', 'Habitable', 'Civilized', 'Advanced']
 system_type_weight = [30, 25, 20, 20, 15]
 

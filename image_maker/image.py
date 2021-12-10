@@ -48,7 +48,7 @@ def gen_image(star, code='0'):
       img_size = img_key
   
   # Convert the planets to match the Image
-  if p_type:
+  if star.local_system:
     for planet_type in utils.img_p_dict.items():
       img_key, val = planet_type
 
@@ -58,21 +58,25 @@ def gen_image(star, code='0'):
   # Define the paths for image selection. This setup allows for modularity
   # and the addition of extra images to increase randomization.
   root = 'image_maker/textures'
-  bg_path = f'{root}/backgrounds/{background}/' + background.lower() + '1.png'
   base_path = f'{root}/base/{img_size}.png'
 
-  # The spots, local system, and flares attributes have different texture
+  # The spots, local system, position and flares attributes have different texture
   # meaning they must have their folder listed for selection of image.
+  bg_path = f'{root}/backgrounds/{background}/'
+  bg_lst = os.listdir(bg_path)
+
   spots_path = f'{root}/spots/{sun_spots}/{color}/'
   spots_lst = os.listdir(spots_path)
+
   if star.local_system:
     planet_path = f'{root}/planets/{sys_type}/'
     planet_lst = os.listdir(planet_path)
+  
   flare_path = f'{root}/flares/{color}/{img_size}/{flares}/'
   flare_lst = os.listdir(flare_path)
 
   # Open each image in a new variable.
-  bg = Image.open(bg_path).convert('RGBA')
+  bg = Image.open(bg_path + random.choice(bg_lst)).convert('RGBA')
   flare = Image.open(flare_path + random.choice(flare_lst)).convert('RGBA')
   base = Image.open(base_path).convert('RGBA')
   spots = Image.open(spots_path + random.choice(spots_lst)).convert('RGBA')

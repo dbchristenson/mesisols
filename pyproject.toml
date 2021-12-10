@@ -7,6 +7,9 @@ authors = ["Your Name <you@example.com>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 Pillow = "^8.4.0"
+py-algorand-sdk = "^1.8.0"
+replit = "^3.2.4"
+natsort = "^8.0.0"
 
 [tool.poetry.dev-dependencies]
 
