@@ -5,7 +5,6 @@
 
 # General #
 from PIL import Image, ImageDraw, ImageFilter
-from image_maker import textures
 import random, os
 
 # Python Files #

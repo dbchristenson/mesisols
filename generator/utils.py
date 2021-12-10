@@ -17,7 +17,7 @@ get_temp = get_truncated_normal(7000, 3000, 1000, 30000)
 
 # Luminosity classes and weights
 lum_lst = [*range(8)]
-lum_weight = [1, 3, 3, 8, 10, 15, 25, 35]
+lum_weight = [1, 4, 15, 20, 25, 15, 15, 5]
 
 # Colors
 color_lst = ['Black', 'Brown', 'Dynamic', 'Red',
@@ -48,12 +48,12 @@ class_lst = ['M', 'K', 'G', 'F', 'A', 'B', 'O', 'S']
 # Positions
 position_lst = ['Disk', 'Globular Cluster', 'Halo',
                 'Bulge', 'Nucleus', 'Rogue']
-position_weight = [50, 20, 10, 10, 5, 5]
+position_weight = [30, 20, 15, 15, 10, 10]
 
 # Local System
-system = get_truncated_normal(0, 2, 0, 10)
+system = get_truncated_normal(1, 1, 1, 4)
 system_type_lst = ['Barren', 'Exposed', 'Habitable', 'Civilized', 'Advanced']
-system_type_weight = [50, 35, 10, 4, 1]
+system_type_weight = [30, 25, 20, 20, 15]
 
 img_p_dict = {
   'low': ['Barren', 'Exposed'],
@@ -68,7 +68,7 @@ spot_severity = ['Low', 'Medium', 'High']
 
 # Solar Activity
 flares = ['Low', 'Medium', 'High']
-flare_weight = [50, 30, 20]
+flare_weight = [40, 35, 25]
 
 # Anomalies
 anomaly_lst = ['Binary Star', 'Pulsar', 'Mira Variable Star', 'Super Nova', 'Eclipse', 'Blackhole', 'Supermassive Blackhole']

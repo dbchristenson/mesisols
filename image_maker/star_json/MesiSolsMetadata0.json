@@ -29,14 +29,8 @@
         {"trait_type":"Position",
         "value":"Halo"
         },
-        {"trait_type":"Local System (Type)",
+        {"trait_type":"Local System",
         "value":"Barren"
-        },
-        {"trait_type":"Local System (Population)",
-        "value":"2"
-        },
-        {"trait_type":"Binary System",
-        "value":"False"
         },
         {"trait_type":"Anomaly",
         "value":"None"

@@ -97,18 +97,9 @@ def gen_json(star, code):
 
                   # Local System
                   f'\n{ind}{ind}'
-                  '{"trait_type":"Local System (Type)",'
+                  '{"trait_type":"Local System",'
                   f'\n{ind}{ind}"value":"{p_type}"\n{ind}{ind}' '},'
-
-                  f'\n{ind}{ind}'
-                  '{"trait_type":"Local System (Population)",'
-                  f'\n{ind}{ind}"value":"{p_num}"\n{ind}{ind}' '},'
-
-                  # Binary
-                  f'\n{ind}{ind}'
-                  '{"trait_type":"Binary System",'
-                  f'\n{ind}{ind}"value":"{binary}"\n{ind}{ind}' '},'
-
+                  
                   # Anomaly
                   f'\n{ind}{ind}'
                   '{"trait_type":"Anomaly",'
