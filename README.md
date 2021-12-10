@@ -6,12 +6,10 @@ There is NO predefined rarity given to each MesiSol. This is because the Mesiver
 Here are some other official Mesiverse links:
 
 https://mesiverse.org
-
 https://ab2.gallery/account/JMH4GWNMNHGF5QURMQE4JT7RI2FZIGOEWRE5QVMEAZLQQ2Y7CAW5TA2ROY
 https://twitter.com/mesiverse
 
 https://www.savetheboundarywaters.org
-
 https://www.darksky.org
 
 # Introduction
