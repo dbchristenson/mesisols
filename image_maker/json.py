@@ -19,10 +19,8 @@ def gen_json(star, code):
   recorded on it.
   '''
 
-  # Json data requires indentation so set up
-  # a variable to handle it with consistency.
   ind = '    '
-
+  
   # Parse out all relevant attributes of the star
   temp = str(star.temperature)
   lum = str(star.luminosity)
@@ -40,13 +38,33 @@ def gen_json(star, code):
   else:
     p_type = None
     p_num = 0
-  if star.partner:
-    binary = 'True'
-  else:
-    binary = 'False'
-  anomaly = star.anomaly # str
 
-  metadata2 = ('{'f'\n{ind}"standard": "arc69",'
+  if star.anomaly:
+    anomaly = star.anomaly
+  else:
+    anomaly = 'None'
+
+  {"trait_type":"Temperature","value":"1"},
+
+  metadata2 = {
+    'standard' : 'arc69',
+    'external_url' : 'mesiverse.org',
+    'attributes' : [
+      {'trait_type':'Temperature', 'value':str(int(temp)) + 'K'},
+      {'trait_type':'Luminosity', 'value':lum},
+      {'trait_type':'Size', 'value':size},
+      {'trait_type':'Color', 'value':color},
+      {'trait_type':'Life Stage', 'value':life_stage},
+      {'trait_type':'Stellar Class', 'value':stellar_class},
+      {'trait_type':'Solar Activity', 'value':activity},
+      {'trait_type':'Solar Flares', 'value':flares},
+      {'trait_type':'Position', 'value':position},
+      {'trait_type':'Local System', 'value':p_type},
+      {'trait_type':'Anomaly', 'value':anomaly}
+      ]
+  }
+
+  meta_log = ('{'f'\n{ind}"standard": "arc69",'
                   f'\n{ind}"description": "MesiSol {code}",'
                   f'\n{ind}"attributes": ['
 
@@ -109,6 +127,8 @@ def gen_json(star, code):
   '}')
 
   with open(f'image_maker/star_json/MesiSolsMetadata{code}.json', 'w+') as j:
-    j.write(metadata2)
+    j.write(meta_log)
   
   j.close
+
+  return json.dumps(metadata2)

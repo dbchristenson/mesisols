@@ -8,6 +8,9 @@ import hashlib
 import os, glob
 from replit import db
 import requests
+from generator.sol_gen import gen_sol
+from image_maker.image import gen_image
+from image_maker.json import gen_json
 
 ### Algo API ###
 from natsort import natsorted
@@ -45,10 +48,14 @@ def mint_collection(count):
 
   # Use a for loop to mint each NFT
   for code in range(1, count + 1):
-    mint(code)
+    star = gen_sol()
+    json_meta = gen_json(star, code)
+    gen_image(star, code)
+
+    mint(code, json_meta)
 
 
-def mint(code, testnet=False):
+def mint(code, json_meta, testnet=False):
   '''
   This function mints MesiSols to the mainnet.
 
@@ -61,18 +68,15 @@ def mint(code, testnet=False):
   # For debugging and minting purposes, convert the code int to str.
   str_code = str(code)
 
-  print(f'--- Initializing creation of MesiSol #{str(code)} ---')
+  print(f'--- Initializing creation of MesiSol #{str_code} ---')
 
   # Using Pinata link the image to an ipfs URL for upload.
-  metadata2 = open(f'{meta_path}/MesiSolsMetadata{str_code}.json').read()
-
   # Do some sorting in the image path to get the right files
   imgs = natsorted(glob.glob(os.path.join(images_path, "*.png")))
   files = [('file', (str_code + ".png", open(imgs[code], "rb"))),]
-
   ipfs_url = "https://api.pinata.cloud/pinning/pinFileToIPFS"
 
-  headers = {        
+  headers = {
         "pinata_api_key": api_key,
         "pinata_secret_api_key": api_secret
         }
@@ -82,7 +86,6 @@ def mint(code, testnet=False):
 
   # Sets the ipfs_cid hash
   ipfs_cid = meta['IpfsHash']
-  print(ipfs_cid)
 
   ### Initizializing Blockchain Connection ###
 
@@ -114,15 +117,13 @@ def mint(code, testnet=False):
   params.fee = 1000
   params.flat_fee = True
 
-  print(metadata2)
-
   txn = AssetConfigTxn(
     sender = accounts[1]['pk'],
     sp = params,
     total = 1,
     default_frozen = False,
-    unit_name = f'MesiSol #{str_code}',
-    asset_name = f'MSOL {str_code}',
+    asset_name = f'MesiSol #{str_code}',
+    unit_name = f'MSOL{str_code}',
     manager = accounts[1]['pk'],
     reserve = accounts[1]['pk'],
     freeze = None,
@@ -130,7 +131,7 @@ def mint(code, testnet=False):
     strict_empty_address_check=False,
     url = f'ipfs://{ipfs_cid}',
     metadata_hash = '',
-    note = json.loads(metadata2).decode('utf-8'),
+    note = json_meta.encode(),
     decimals = 0)
     
   # Sign the transaction using the secret key for the account and 
@@ -141,15 +142,12 @@ def mint(code, testnet=False):
   print(f'--- {txid} is your transaction ID for MesiSol #{str_code} ---')
 
   wait_for_confirmation(algod_client, txid)
-  db[str_code] = txid
 
   try:
-    # Pull account info for the creator
-    # account_info = algod_client.account_info(accounts[1]['pk'])No docu
-    # get asset_id from tx
-    # Get the new asset's information from the creator account
+    # Pull successful transaction info.
     ptx = algod_client.pending_transaction_info(txid)
     asset_id = ptx["asset-index"]
+    db[str_code] = asset_id
     print_created_asset(algod_client, accounts[1]['pk'], asset_id)
   except Exception as e:
     print(e)

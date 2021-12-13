@@ -87,7 +87,7 @@ def gen_image(star, code='0'):
 
   # Because stars may appear in front of planets, paste the
   # local system in first.
-  if p_num:
+  if star.local_system:
     for planet_idx in range(p_num):
       planet = Image.open(planet_path + random.choice(planet_lst)).convert('RGBA')
       bg.paste(planet, (0,0), planet)
@@ -117,22 +117,3 @@ def gen_image(star, code='0'):
   # Save the completed image to the correct folder.
   img_path = 'image_maker/star_pngs'
   bg.save(f'{img_path}/MesiSol{code}.png')
-
-
-def gen_collection(n):
-  '''
-  This function generates the png files for a collection
-  of n size of mesisols.
-  Inputs:
-    n: int representing how many images to generate
-  
-  Returns:
-    fills up the star_pngs folder with n amount of a star images.
-  '''
-
-  for star_idx in range(1, n + 1):
-    star = gen_sol()
-
-    gen_image(star, str(star_idx))
-    json.gen_json(star, str(star_idx))
-    
