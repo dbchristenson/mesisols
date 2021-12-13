@@ -1,7 +1,7 @@
-# MesiSols
-MesiSols is a collection of generative pixel art NFTs on the Algorand Blockchain. MesiSols are not only generated on randomization, but logic as well. Through statistical distribution, star attributes were made to be balanced, cohesive, and varied. Some attributes are not shown in the actual NFT image itself but as one of the NFT's attributes. These properties are normally used to help generate the visual properties of a MesiSol.
+# MesiSols ☀️
+MesiSols is a collection of generative pixel art NFTs on the Algorand Blockchain. MesiSol generation is decided partly complete randomization and partly logic. Through statistical distribution, star attributes were made to be balanced, cohesive, and varied. Some attributes are not shown in the actual NFT image itself but as one of the NFT's attributes. These properties are normally used to help generate the visual properties of a MesiSol.
 
-There is NO predefined rarity given to each MesiSol. This is because the Mesiverse team wants each MesiSol to have an ambiguous value only perceived by the holder. Information about the different attributes can be found on our website: mesiverse.org
+Mesisols are not given a predefined rarity. The vision was for each MesiSol to have ambiguous value. Rarity scores will still be given through ARC69 and more information about MesiSol attributes can be found on our website linked below.
 
 Here are some other official Mesiverse links:
 
@@ -16,16 +16,15 @@ https://www.savetheboundarywaters.org
 https://www.darksky.org
 
 # Introduction
-The MesiSols 'App' is broken into several sections:
+The MesiSols program is broken into several sections:
 
 Generator: contains the python files for the computation and generation of a single MesiSol
 Data Sets: contains some CSV files that I used to ensure that the distribution of the numbers is standardized
-Image Maker: contains the python files for the generation of a single image and also for the generation of a collection of n size
+Image Maker: contains the python files for the generation of the image of a MesiSol
 Json Attributes: contains the python files for generating the metadata of each NFT so that the attributes can be displayed on
                  sites like RandGallery or NFTExplorer.
+Minting: contains the python files for minting each mesisol on the blockchain automatically.
 
-Download all the files and put them into an IDE and run the program. Using the command gen_sol() should return a star and the string
-representation of one. gen_image() should save a new image to the star_pngs folder inside the Image Maker folder. and Generating a
-collection should do the same on a larger scale.
+With all files installed, you should be able to run the commands in main.py to deploy full functionality of the program.
 
 Thanks for checking out MesiSols and stay tuned for more Mesiverse releases!
