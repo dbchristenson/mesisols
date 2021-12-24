@@ -231,23 +231,22 @@ def gen_partner(color, size):
   req_size = ['Neutron Star', 'Subdwarf', 'Dwarf', 'Subgiant']
   chance = random.randint(1,100)
 
-  # Conditional to check if the size of the star is eligible
-  # for a chance to be a double planet.
+  # Conditional to check what color the binary star should be.
   binary_colors = ['Yellow', 'Orange', 'Red', 'Blue', 'White']
   if color in binary_colors:
     binary_selection = binary_colors.remove(color)
   else:
     binary_selection = binary_colors
 
+  # Conditional to check if the star will be in a binary system.
   if size in req_size:
-
-    # Conditional
     if color == 'Dynamic':
       if chance > 10:
         sub_star = random.choice(binary_selection)
     elif color in binary_colors:
       if chance > 90:
         sub_star = random.choice(binary_selection)
+
   return sub_star
 
 

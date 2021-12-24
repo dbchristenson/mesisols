@@ -22,6 +22,10 @@ lum_weight = [1, 4, 15, 20, 25, 15, 15, 5]
 # Colors
 color_lst = ['Black', 'Brown', 'Dynamic', 'Red',
             'Orange', 'Yellow', 'White', 'Blue']
+color_dict = {
+  'Poor' : ['Blue', 'White', 'Yellow'],
+  'Rich' : ['Red', 'Orange']
+}
 
 # Sizes
 size_lst = ['Neutron Star', 'Subdwarf', 'Dwarf', 'Subgiant',
@@ -36,6 +40,10 @@ img_size_dict = {
 # Life Stages
 stage_lst = ['Protostar', 'Main Sequence', 'Post Sequence',
              'Near Death', 'Post Death', 'Undefined']
+stage_dict = {
+  'Young' : ['Protostar', 'Main Sequence'],
+  'Old' : ['Post Sequence', 'Near Death', 'Post Death']
+}
 
 stage_arr = np.array([[4, 4, 4, 4, 4, 4, 4, 4], [3, 0, 0, 0, 0, 1, 1, 1],
                      [3, 1, 1, 1, 1, 1, 3, 3], [2, 2, 1, 1, 1, 1, 1, 1],

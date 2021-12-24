@@ -45,7 +45,7 @@ def has_anomaly(Star):
   mira_sizes = ['Cepheid', 'Giant', 'Supergiant']
   
   # Conditional to check if the Star has Mira Variable attributes.
-  if Star.color == 'Red' and Star.size in mira_sizes:
+  if Star.color in ['Red', 'Yellow'] and Star.size in mira_sizes:
     chance = random.randint(1,100)
 
     # Cepheid star types have a higher chance to be Mira Stars.

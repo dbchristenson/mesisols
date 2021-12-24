@@ -3,8 +3,6 @@
 ###===--- Imports ---===###
 
 ### General ###
-import json
-import hashlib
 import os, glob
 from replit import db
 import requests
