@@ -25,11 +25,11 @@ def gen_color(temperature, luminosity):
   color = 'Blue'
   ratio = int(temperature * luminosity)
   percentiles = {
-  'zero' : (range(0, 5000), ['Black', 'Dynamic']),
-  'ten' : (range(5000, 15000), ['Brown', 'Red', 'Orange']),
-  'twofive' : (range(15000, 25000), ['Red', 'Orange', 'Yellow']),
-  'fifty' : (range(25000, 38000), ['Orange', 'Yellow']),
-  'sevenfive' : (range(38000, 51000), ['Yellow', 'White']),
+  'zero' : (range(0, 7999), ['Black', 'Dynamic']),
+  'ten' : (range(8000, 14999), ['Brown', 'Red', 'Orange']),
+  'twofive' : (range(15000, 24999), ['Red', 'Orange', 'Yellow']),
+  'fifty' : (range(25000, 37999), ['Orange', 'Yellow']),
+  'sevenfive' : (range(38000, 50999), ['Yellow', 'White', 'Blue']),
   'ninety' : (range(51000, 63000), ['White', 'Blue'])
   }
 
@@ -82,13 +82,13 @@ def gen_size(color):
   # Use conditionals to determine what the probablities of getting
   # each size class of star for each color.
   if color == 'Dynamic':
-    probabilities = [30, 70]
-    seq = ['Dwarf', 'Cepheid']
+    probabilities = [15, 20, 20, 15, 30]
+    seq = ['Subdwarf', 'Dwarf', 'Subgiant', 'Giant', 'Cepheid']
   elif color == 'Black':
-    probabilities = [15, 85]
-    seq = ['Neutron Star', 'Undefined']
+    probabilities = [20, 30, 20, 30]
+    seq = ['Neutron Star', 'Subdwarf', 'Dwarf', 'Undefined']
   elif color == 'Brown':
-    probabilities = [80, 20]
+    probabilities = [60, 40]
     seq = ['Neutron Star', 'Subdwarf']
   elif color == 'Red':
     probabilities = [5, 35, 25, 15, 10, 10]
@@ -170,7 +170,7 @@ def gen_stellar_class(color, luminosity):
   low_lum = luminosity <= 1
 
   # Get the normal colors of a star and the list of all stellar classes.
-  norm_colors = ['Red', 'Orange', 'Yellow', 'White', 'Blue']
+  norm_colors = ['Red', 'Orange', 'Yellow', 'White', 'Blue', 'Brown']
   class_lst = utils.class_lst
 
   # Use a conditional to assign stellar classes to a star.
@@ -228,24 +228,19 @@ def gen_partner(color, size):
   # Define the return variable and parameters for what is
   # needed to have a partner planet.
   sub_star = None
-  req_size = ['Neutron Star', 'Subdwarf', 'Dwarf', 'Subgiant']
   chance = random.randint(1,100)
 
   # Conditional to check what color the binary star should be.
   binary_colors = ['Yellow', 'Orange', 'Red', 'Blue', 'White']
-  if color in binary_colors:
-    binary_selection = binary_colors.remove(color)
-  else:
-    binary_selection = binary_colors
+  binary_selection = [b_color for b_color in binary_colors if b_color != color]
 
   # Conditional to check if the star will be in a binary system.
-  if size in req_size:
-    if color == 'Dynamic':
-      if chance > 10:
-        sub_star = random.choice(binary_selection)
-    elif color in binary_colors:
-      if chance > 90:
-        sub_star = random.choice(binary_selection)
+  if color in binary_colors:
+    if chance > 80:
+      sub_star = random.choice(binary_selection)
+  elif color == 'Dynamic':
+    if chance > 50:
+      sub_star = random.choice(binary_selection)
 
   return sub_star
 

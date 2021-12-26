@@ -27,6 +27,8 @@ def gen_image(star, code='0'):
   Returns: a png image that represents the star.
   '''
 
+  json.gen_json(star, code)
+
   # Link each visual attribute of the star to more readable
   # variables for navigating the images.
   size, color = (star.size, star.color) # str, str
@@ -106,23 +108,26 @@ def gen_image(star, code='0'):
 
       nova_age = random.choice(['Old', 'Young'])
 
-      for cat in utils.color_dict:
-        items = utils.color_dict[cat]
-        if star.life_stage in items:
-          nova_material = cat
+      for cat in utils.color_dict.items():
+        key = cat[0]
+        val = cat[1]
+
+        if star.life_stage in val:
+          nova_material = key
       
       anomaly_path = f'{root}/anomaly/Supernova/{nova_age}/{nova_material}.png'
     elif anomaly == 'Eclipse':
       anomaly_path = f'{root}/base/{size}.png'
       cont = True
     elif anomaly == 'Pulsar':
-      anomaly_path = f'{root}/Pulsar/pulsar.png'
+      anomaly_path = f'{root}/anomaly/Pulsar/pulsar.png'
       cont = True
     elif anomaly == 'Mira Variable Star':
-      anomaly_path = f'{root}/Mira Variable Star/{color}.png'
+      anomaly_path = f'{root}/anomaly/Mira Variable Star/{color}.png'
     elif anomaly == 'Blackhole':
-      anomaly_path = f'{root}/base/Blackhole.png'
+      anomaly_path = f'{root}/anomaly/Blackhole/Blackhole.png'
     elif anomaly == 'Supermassive Blackhole':
+      bg = Image.open(f'{root}/backgrounds/Rogue/rogue2.png)').convert('RGBA')
       anomaly_path = f'{root}/anomaly/Supermassive Blackhole/smb.png'
 
     anomaly_img = Image.open(anomaly_path).convert('RGBA')

@@ -6,6 +6,7 @@
 import os, glob
 from replit import db
 import requests
+import json
 from generator.sol_gen import gen_sol
 from image_maker.image import gen_image
 from image_maker.json import gen_json
@@ -47,13 +48,13 @@ def mint_collection(count):
   # Use a for loop to mint each NFT
   for code in range(1, count + 1):
     star = gen_sol()
-    json_meta = gen_json(star, code)
+    gen_json(star, code)
     gen_image(star, code)
 
-    mint(code, json_meta)
+    mint(code)
 
 
-def mint(code, json_meta, testnet=False):
+def mint(code, testnet=False):
   '''
   This function mints MesiSols to the mainnet.
 
@@ -62,6 +63,11 @@ def mint(code, json_meta, testnet=False):
   '''
 
   ### Configuration ###
+
+  # Find the attribute metadata of the star
+  meta_file = open(f'image_maker/star_json/MesiSolsMetadata{code}.json', 'r')
+  meta_dict = json.load(meta_file)
+  json_meta = json.dumps(meta_dict)
 
   # For debugging and minting purposes, convert the code int to str.
   str_code = str(code)

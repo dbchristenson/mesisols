@@ -56,7 +56,7 @@ class_lst = ['M', 'K', 'G', 'F', 'A', 'B', 'O', 'S']
 # Positions
 position_lst = ['Disk', 'Globular Cluster', 'Halo',
                 'Bulge', 'Nucleus', 'Rogue']
-position_weight = [30, 20, 15, 15, 10, 10]
+position_weight = [30, 20, 15, 20, 5, 10]
 
 # Local System
 system = get_truncated_normal(1, 2.5, 0, 4)
