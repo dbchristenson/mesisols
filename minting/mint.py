@@ -57,9 +57,6 @@ def mint_collection(count):
 def mint(code, testnet=False):
   '''
   This function mints MesiSols to the mainnet.
-
-  Inputs:
-    count (int): specifies how many MesiSols to mint.
   '''
 
   ### Configuration ###

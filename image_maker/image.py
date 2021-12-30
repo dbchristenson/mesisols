@@ -14,8 +14,22 @@ from image_maker import json
 
 
 ###===--- Image Generator Functions ---===###
+def gen_collection(n):
+  '''
+  This function generates a collection of MesiSol images and
+  their corresponding metadata.
+  
+  Inputs:
+    n: int representing how many should be generated
+  
+  Returns: a collection of images and json data.
+  '''
 
-# Star(0,0,'Red','Subdwarf','Main Sequence','M','Halo',None,('Barren',2),'Low','Low',None)
+  for sol_num in range(n):
+    star = gen_sol()
+
+    gen_image(star, sol_num)
+
 
 def gen_image(star, code='0'):
   '''
@@ -46,6 +60,12 @@ def gen_image(star, code='0'):
 
     if size in val:
       img_size = img_key
+
+      if img_size == 'special':
+        img_size = random.choice(['small', 'medium', 'large'])
+    
+    if size in ['Cephied', 'Undefined']:
+      img_size = random.choice(['small', 'medium', 'large'])
   
   # Convert the planets to match the Image
   if star.local_system:
@@ -108,12 +128,10 @@ def gen_image(star, code='0'):
 
       nova_age = random.choice(['Old', 'Young'])
 
-      for cat in utils.color_dict.items():
-        key = cat[0]
-        val = cat[1]
-
-        if star.life_stage in val:
-          nova_material = key
+      if star.life_stage in utils.color_dict['Poor']:
+        nova_material = 'Poor'
+      else:
+        nova_material = 'Rich'
       
       anomaly_path = f'{root}/anomaly/Supernova/{nova_age}/{nova_material}.png'
     elif anomaly == 'Eclipse':
