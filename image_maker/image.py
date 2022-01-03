@@ -127,11 +127,7 @@ def gen_image(star, code='0'):
       nova_material = None
 
       nova_age = random.choice(['Old', 'Young'])
-
-      if star.life_stage in utils.color_dict['Poor']:
-        nova_material = 'Poor'
-      else:
-        nova_material = 'Rich'
+      nova_material = random.choice(['Poor', 'Rich'])
       
       anomaly_path = f'{root}/anomaly/Supernova/{nova_age}/{nova_material}.png'
     elif anomaly == 'Eclipse':

@@ -31,28 +31,20 @@ api_secret = os.environ['pinata_s']
 acc_mnemonic = os.environ['mesi_mnemonic']
 
 # Going to be using several print statements for debugging/performance
-def mint_collection(count):
+def mint_collection():
   '''
   This function runs the mint function in a loop, minting each NFT.
   
-  Inputs:
-    count (int): specifies how many MesiSols to mint
-  
-  Returns: a minted collection of MesiSols on Algorand.
+  Returns: a minted collection of MesiSols on the Algorand Blockchain.
   '''
 
-  # Assert that there are enough image files to create the amount
-  # of MesiSols that is desired.
-  assert len(os.listdir('image_maker/star_pngs/')) >= count
+  # Set the data pathing.
+  png_path = 'image_maker/star_pngs'
 
   # Use a for loop to mint each NFT
-  for code in range(1, count + 1):
-    star = gen_sol()
-    gen_json(star, code)
-    gen_image(star, code)
-
-    mint(code)
-
+  os.listdir('image_maker/star_pngs')
+  for index, _ in enumerate(sorted(os.listdir(png_path))):
+    mint(index)
 
 def mint(code, testnet=False):
   '''
@@ -62,7 +54,8 @@ def mint(code, testnet=False):
   ### Configuration ###
 
   # Find the attribute metadata of the star
-  meta_file = open(f'image_maker/star_json/MesiSolsMetadata{code}.json', 'r')
+  meta_path = 'image_maker/star_json/'
+  meta_file = open(meta_path + sorted(os.listdir(meta_path))[code], 'r')
   meta_dict = json.load(meta_file)
   json_meta = json.dumps(meta_dict)
 

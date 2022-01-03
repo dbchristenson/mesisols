@@ -17,9 +17,9 @@
     "minting/mint.py": [
       {
         "id": "e0a24362-a75d-4884-a44e-6f68d255c1a1",
-        "line": 65,
-        "version": 5231,
-        "index": 1607
+        "line": 54,
+        "version": 5677,
+        "index": 1379
       }
     ],
     "utils.py": [

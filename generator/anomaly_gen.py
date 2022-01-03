@@ -41,24 +41,6 @@ def has_anomaly(Star):
       return anomaly_type
   
 
-  ### Mira Variable Star ###
-  mira_sizes = ['Cepheid', 'Giant', 'Supergiant']
-  
-  # Conditional to check if the Star has Mira Variable attributes.
-  if Star.color in ['Red', 'Yellow', 'Orange'] and Star.size in mira_sizes:
-    chance = random.randint(1,100)
-
-    # Cepheid star types have a higher chance to be Mira Stars.
-    if Star.size == 'Cepheid':
-      if chance > 60:
-        anomaly_type = 'Mira Variable Star'
-        return anomaly_type
-    else:
-      if chance > 75:
-        anomaly_type = 'Mira Variable Star'
-        return anomaly_type
-  
-
   ### Super Nova ###
   nova_sizes = ['Giant', 'Supergiant']
 
@@ -98,6 +80,8 @@ def has_anomaly(Star):
         anomaly_type = 'Supermassive Blackhole'
       else:
         anomaly_type = 'Blackhole'
+
+      Star.temperature = 1
   
   return anomaly_type
 
