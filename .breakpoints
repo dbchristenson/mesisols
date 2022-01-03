@@ -1,16 +1,24 @@
 {
   "files": {
+    "generator/sol_gen.py": [
+      {
+        "id": "378eee50-8d4a-4129-9a27-a77d0ddff4a9",
+        "line": 58,
+        "version": 321,
+        "index": 1464
+      }
+    ],
     "image_maker/image.py": [
       {
         "id": "9d282e5e-2da4-4877-9f28-b45b6bbcbe0e",
         "line": 1,
-        "version": 10739,
+        "version": 10879,
         "index": 0
       },
       {
         "id": "59f063ac-b20b-46f2-8873-c5b0a7ceece8",
         "line": 12,
-        "version": 10739,
+        "version": 10879,
         "index": 185
       }
     ],

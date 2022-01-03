@@ -141,8 +141,8 @@ def gen_image(star, code='0'):
     elif anomaly == 'Blackhole':
       anomaly_path = f'{root}/anomaly/Blackhole/Blackhole.png'
     elif anomaly == 'Supermassive Blackhole':
-      bg = Image.open(f'{root}/backgrounds/Rogue/rogue2.png)').convert('RGBA')
-      anomaly_path = f'{root}/anomaly/Supermassive Blackhole/smb.png'
+      bg = Image.open(f'{root}/backgrounds/Rogue/rogue2.png').convert('RGBA')
+      anomaly_path = f'{root}/anomaly/Supermassive Blackhole/smb1.png'
 
     anomaly_img = Image.open(anomaly_path).convert('RGBA')
     bg.paste(anomaly_img, (0,0), anomaly_img)
