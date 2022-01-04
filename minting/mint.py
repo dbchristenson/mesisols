@@ -7,9 +7,7 @@ import os, glob
 from replit import db
 import requests
 import json
-from generator.sol_gen import gen_sol
-from image_maker.image import gen_image
-from image_maker.json import gen_json
+import re
 
 ### Algo API ###
 from natsort import natsorted
@@ -31,7 +29,7 @@ api_secret = os.environ['pinata_s']
 acc_mnemonic = os.environ['mesi_mnemonic']
 
 # Going to be using several print statements for debugging/performance
-def mint_collection():
+def mint_collection(start_idx=0, end_idx=-1):
   '''
   This function runs the mint function in a loop, minting each NFT.
   
@@ -43,8 +41,8 @@ def mint_collection():
 
   # Use a for loop to mint each NFT
   os.listdir('image_maker/star_pngs')
-  for index, _ in enumerate(sorted(os.listdir(png_path))):
-    mint(index)
+  for index, _ in enumerate(sorted(os.listdir(png_path))[start_idx:]):
+    mint(index + start_idx)
 
 def mint(code, testnet=False):
   '''
@@ -52,12 +50,6 @@ def mint(code, testnet=False):
   '''
 
   ### Configuration ###
-
-  # Find the attribute metadata of the star
-  meta_path = 'image_maker/star_json/'
-  meta_file = open(meta_path + sorted(os.listdir(meta_path))[code], 'r')
-  meta_dict = json.load(meta_file)
-  json_meta = json.dumps(meta_dict)
 
   # For debugging and minting purposes, convert the code int to str.
   str_code = str(code)
@@ -80,6 +72,13 @@ def mint(code, testnet=False):
 
   # Sets the ipfs_cid hash
   ipfs_cid = meta['IpfsHash']
+
+  # Find the attribute metadata of the star
+  i_star_code = re.sub(r'\D+', '', imgs[code])
+  meta_path = 'image_maker/star_json/'
+  meta_file = open(meta_path + f'MesiSolsMetadata{i_star_code}.json')
+  meta_dict = json.load(meta_file)
+  json_meta = json.dumps(meta_dict)
 
   ### Initizializing Blockchain Connection ###
 
