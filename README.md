@@ -19,10 +19,14 @@ https://www.darksky.org
 The MesiSols program is broken into several sections:
 
 Generator: contains the python files for the computation and generation of a single MesiSol
+
 Data Sets: contains some CSV files that I used to ensure that the distribution of the numbers is standardized
+
 Image Maker: contains the python files for the generation of the image of a MesiSol
+
 Json Attributes: contains the python files for generating the metadata of each NFT so that the attributes can be displayed on
                  sites like RandGallery or NFTExplorer.
+                 
 Minting: contains the python files for minting each mesisol on the blockchain automatically.
 
 With all files installed, you should be able to run the commands in main.py to deploy full functionality of the program.
