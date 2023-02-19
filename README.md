@@ -15,6 +15,8 @@ https://www.savetheboundarywaters.org
 
 https://www.darksky.org
 
+https://www.nftexplorer.app/collection/mesisols
+
 # Program
 The MesiSols program is broken into several sections:
 
